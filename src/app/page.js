@@ -1,10 +1,10 @@
 "use client";
+import { useEffect, useState, useRef } from "react";
 import "./app.css";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "./header/page";
 import Footer from "./footer/page";
-import { useEffect, useState } from "react";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import HeroImg1 from "../assets/images/hero-img01.png";
 import HeroImg2 from "../assets/images/hero-img02.png";
@@ -19,10 +19,35 @@ import { BsArrowRight } from "react-icons/bs";
 import About from "../../components/About";
 import DoctorList from "./Doctors/DoctorList";
 import Testimonials from "../../components/Testimonials/Testimonials";
+import Typed from "typed.js";
 
 export default function Home() {
   const [isTopOfPage, setIsTopOfPage] = useState(true);
   const isDesktop = useMediaQuery("(min-width: 1060px)");
+
+  const ty = useRef(null);
+
+    useEffect(() => {
+      const typed = new Typed(ty.current, {
+        strings: [
+          "We help patients live a healthy, longer life.",
+          "All back pain and problems.",
+          "Equipmants available.",
+          "Get in Touch.",
+        ],
+        loop: true,
+        loopCount: Infinity,
+        startDelay: 0,
+        typeSpeed: 100,
+        backSpeed: 50,
+        backDelay: 0,
+      });
+
+      return () => {
+        // Destroy Typed instance during cleanup to stop animation
+        typed.destroy();
+      };
+    }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,9 +68,9 @@ export default function Home() {
             {/* Hero Content */}
             <div>
               <div className="lg:w-[570px]">
-                <h1 className="text-[36px] leading-[46px] text-headingColor font-[800] md:text-[60px]">
-                  We help patients live a healthy, longer life.
-                </h1>
+                <h4 className="text-[20px] leading-[46px] text-headingColor font-[800] md:text-[60px]">
+                  <span  ref={ty} />
+                </h4>
                 <p className="text_para text-white">
                   Times have definitely changed since I was a kid. The young
                   boys coming up now appear to lack a certain drive and
@@ -168,9 +193,9 @@ export default function Home() {
           </div>
         </div>
         <About />
-        </section>
-        {/* Services Section */}
-    
+      </section>
+      {/* Services Section */}
+
       {/* Services Section end */}
 
       {/* Feature Section  */}
@@ -243,7 +268,6 @@ export default function Home() {
       <section>
         <div className="container py-8">
           <div className="flex justify-center items-center md:flex-col  gap-[50px] lg:gap-0">
-           
             <div className="w-full md:w-1/2">
               <h2 className="heading">
                 Most questions by our beloved patients

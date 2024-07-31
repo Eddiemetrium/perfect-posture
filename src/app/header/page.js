@@ -1,8 +1,9 @@
 "use client"
+import React, { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
+import gsap from "gsap";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
 import logo from "../../assets/images/logo.png";
 import UserImg from "../../assets/images/avatar-icon.png";
 import Menu from "../../assets/images/menu-icon.svg";
@@ -12,6 +13,22 @@ import SideMenu from "../../../components/sideMenu"; // Adjust the import path
 const Header = () => {
   const pathname = usePathname();
   const [showMenu, setShowMenu] = useState(false);
+
+   const logoRef = useRef(null);
+
+
+   useEffect(() => {
+     const el = logoRef.current;
+     gsap.from(el, { x: 350, rotation: 360, opacity: 0.5, duration: 2 });
+     gsap.to(el, {
+       x: -20,
+       rotation: 0,
+       opacity: 1,
+       duration: 4,
+       ease: "bounce({ strength: 4})",
+     });
+   }, []);
+ 
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -31,7 +48,12 @@ const Header = () => {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <section>
-              <Image className="w-[10rem]" src={logo} alt="logo" />
+              <Image
+                ref={logoRef}
+                className="w-[10rem]"
+                src={logo}
+                alt="logo"
+              />
             </section>
             {/* Menu */}
             <section className={`navigation ${showMenu ? "show_menu" : ""}`}>
