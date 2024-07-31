@@ -24,7 +24,7 @@ function Page() {
             <span className="">Back</span>
           </h3>
           <form className="py-4 md:py-0">
-            <div className="mb-5">
+            <div className="mb-5"> 
               <input
                 className="w-full px-4 py-3 border-b border-solid border-[#0066ff61] focus:outline-none focus:border-b-primaryColor text-[18px] leading-7 text-headingColor placeholder:text-textColor rounded-md cursor-text "
                 type="email"
