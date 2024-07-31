@@ -192,7 +192,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <About />
       </section>
       {/* Services Section */}
 

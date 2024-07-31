@@ -7,7 +7,7 @@ import Link from "next/link";
 const About = () => {
   return (
     <section>
-      <div className="container mx-auto">
+      <div className="container lg:flex">
         <div className="flex justify-between gap-[50px] lg:gap-[130px] xl:gap-0 flex-col lg:flex-row">
           {/* About Image */}
           <div
