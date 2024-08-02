@@ -27,27 +27,27 @@ export default function Home() {
 
   const ty = useRef(null);
 
-    useEffect(() => {
-      const typed = new Typed(ty.current, {
-        strings: [
-          "We help patients live a healthy, longer life.",
-          "All back pain and problems.",
-          "Equipmants available.",
-          "Get in Touch.",
-        ],
-        loop: true,
-        loopCount: Infinity,
-        startDelay: 0,
-        typeSpeed: 100,
-        backSpeed: 50,
-        backDelay: 0,
-      });
+  useEffect(() => {
+    const typed = new Typed(ty.current, {
+      strings: [
+        "We help patients live a healthy, longer life.",
+        "All back pain and problems.",
+        "Equipments available.",
+        "Get in Touch.",
+      ],
+      loop: true,
+      loopCount: Infinity,
+      startDelay: 0,
+      typeSpeed: 100,
+      backSpeed: 50,
+      backDelay: 0,
+    });
 
-      return () => {
-        // Destroy Typed instance during cleanup to stop animation
-        typed.destroy();
-      };
-    }, []);
+    return () => {
+      // Destroy Typed instance during cleanup to stop animation
+      typed.destroy();
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,6 +59,7 @@ export default function Home() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   return (
     <>
       <Header isTopOfPage={isTopOfPage} />
@@ -69,13 +70,13 @@ export default function Home() {
             <div>
               <div className="lg:w-[570px]">
                 <h4 className="text-[20px] leading-[46px] text-headingColor font-[800] md:text-[60px]">
-                  <span  ref={ty} />
+                  <span ref={ty} />
                 </h4>
                 <p className="text_para text-white">
                   Times have definitely changed since I was a kid. The young
                   boys coming up now appear to lack a certain drive and
-                  assertiveness that is essentially in becoming strong men.
-                  What’s your opinion? Subscribe and share this channel.
+                  assertiveness that is essential in becoming strong men.
+                  What&rsquo;s your opinion? Subscribe and share this channel.
                 </p>
                 <button className="btn h-[60px] ">Book Appointment</button>
               </div>
@@ -139,7 +140,7 @@ export default function Home() {
                   Find a doctor.
                 </h2>
                 <p className=" text-[16px] leading-7 text-textColor font-[400] mt-4 text-center">
-                  World-class care for everyone . Our health System offers
+                  World-class care for everyone. Our health system offers
                   unmatched, expert health care. From the lab to the clinic.
                 </p>
                 <Link
@@ -150,7 +151,7 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <div className="py-[0x] px-5 ">
+            <div className="py-[0px] px-5 ">
               <div className="flex items-center justify-center">
                 <Image className="w-[14rem]" src={Icon02} alt="icon01" />
               </div>
@@ -159,7 +160,7 @@ export default function Home() {
                   Purchase Items.
                 </h2>
                 <p className=" text-[16px] leading-7 text-textColor font-[400] mt-4 text-center">
-                  World-class care for everyone . Our health System offers
+                  World-class care for everyone. Our health system offers
                   unmatched, expert health care. From the lab to the clinic.
                 </p>
                 <Link
@@ -179,7 +180,7 @@ export default function Home() {
                   Book an Appointment.
                 </h2>
                 <p className=" text-[16px] leading-7 text-textColor font-[400] mt-4 text-center">
-                  World-class care for everyone . Our health System offers
+                  World-class care for everyone. Our health system offers
                   unmatched, expert health care. From the lab to the clinic.
                 </p>
                 <Link
@@ -250,27 +251,27 @@ export default function Home() {
         </div>
       </section>
       {/* Feature Section end */}
-      {/* Our greate Doctors */}
+      {/* Our great Doctors */}
       <section>
         <div className="container">
           <div className="xl:w-[470px] mx-auto">
             <h2 className="heading text-center">Our great doctors</h2>
             <p className="text_para text-center">
-              World-class care for everyone. Our health System offers unmatched,
+              World-class care for everyone. Our health system offers unmatched,
               expert health care.
             </p>
           </div>
         </div>
         <DoctorList />
-        <FaqList/>
+        <FaqList />
       </section>
-     
+
       {/* Testimonials  */}
       <section>
         <div className="xl:w-[470px] mx-auto">
           <h2 className="heading text-center">What our patients say</h2>
           <p className="text_para text-center">
-            World-class care for everyone. Our health System offers unmatched,
+            World-class care for everyone. Our health system offers unmatched,
             expert health care.
           </p>
         </div>
