@@ -262,22 +262,9 @@ export default function Home() {
           </div>
         </div>
         <DoctorList />
+        <FaqList/>
       </section>
-      {/* Faq Section  */}
-      <section>
-        <div className="container py-8">
-          <div className="flex justify-center items-center md:flex-col  gap-[50px] lg:gap-0">
-            <div className="w-full md:w-1/2">
-              <h2 className="heading">
-                Most questions by our beloved patients
-              </h2>
-              <FaqList />
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* End Faq Section  */}
-
+     
       {/* Testimonials  */}
       <section>
         <div className="xl:w-[470px] mx-auto">

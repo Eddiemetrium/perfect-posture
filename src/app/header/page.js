@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import gsap from "gsap";
@@ -13,22 +13,28 @@ import SideMenu from "../../../components/sideMenu"; // Adjust the import path
 const Header = () => {
   const pathname = usePathname();
   const [showMenu, setShowMenu] = useState(false);
+  const logoRef = useRef(null);
 
-   const logoRef = useRef(null);
+  useEffect(() => {
+    const el = logoRef.current;
 
-
-   useEffect(() => {
-     const el = logoRef.current;
-     gsap.from(el, { x: 350, rotation: 360, opacity: 0.5, duration: 2 });
-     gsap.to(el, {
-       x: -20,
-       rotation: 0,
-       opacity: 1,
-       duration: 4,
-       ease: "bounce({ strength: 4})",
-     });
-   }, []);
- 
+    gsap.fromTo(
+      el,
+      {
+        y: -100, // Start from above the viewport
+        opacity: 0,
+        scale: 0.5, // Start smaller
+      },
+      {
+        y: 0, // End at its natural position
+        opacity: 1,
+        scale: 1, // End at full size
+        duration: 1.5,
+        ease: "bounce.out", // Use the bounce ease for a bouncing effect
+        delay: 0.5, // Optional delay before the animation starts
+      }
+    );
+  }, []);
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -42,78 +48,76 @@ const Header = () => {
   };
 
   return (
-    <>
-      <header className="header bg-blue-950 sticky_header flex items-center pt-3 text-white">
-        <div className="container">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <section>
-              <Image
-                ref={logoRef}
-                className="w-[10rem]"
-                src={logo}
-                alt="logo"
-              />
-            </section>
-            {/* Menu */}
-            <section className={`navigation ${showMenu ? "show_menu" : ""}`}>
-              <ul
-                className={`menu flex items-center gap-[1.7rem] px-5 text-[20px] leading-7 font-[600] ${
-                  pathname === Link ? "" : ""
-                }`}
-              >
-                {navLinks.map(({ href, label }) => (
-                  <li
-                    key={href}
-                    className={`${
-                      pathname === href ? "text-primaryColor" : ""
+    <header className="bg-blue-950 sticky top-0 z-50 text-white">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between py-4">
+          {/* Logo */}
+          <Link href="/">
+            <Image
+              ref={logoRef}
+              className="w-24 md:w-32"
+              src={logo}
+              alt="logo"
+            />
+          </Link>
+
+          {/* Desktop Menu */}
+          <nav className="hidden lg:block">
+            <ul className="flex space-x-6">
+              {navLinks.map(({ href, label }) => (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    className={`text-lg font-semibold ${
+                      pathname === href
+                        ? "text-primaryColor"
+                        : "hover:text-primaryColor"
                     }`}
                   >
-                    <Link href={href}>{label}</Link>
-                  </li>
-                ))}
-              </ul>
-            </section>
-            {/* Right Nav */}
-            <div className="flex items-center gap-4">
-              <div>
-                <Link href="/">
-                  <figure className="w-[35px] h-[35px] rounded-full">
-                    <Image
-                      className="w-full rounded-full"
-                      src={UserImg}
-                      alt="userImg"
-                    />
-                  </figure>
-                </Link>
-              </div>
-              <div>
-                <Link href="/Login">
-                  <button
-                    className="bg-primaryColor py-2 px-6 text-gray-200 font-[600] h-[44px] flex items-center justify-center rounded-[50px] text-[20px]"
-                    onClick={null}
-                  >
-                    Login
-                  </button>
-                </Link>
-              </div>
-              <button
-                className="bg-gray-400 rounded-full lg:hidden cursor-pointer"
-                onClick={toggleMenu}
-              >
-                <Image
-                  className="w-full rounded-full"
-                  src={showMenu ? Close : Menu}
-                  alt="Menu"
-                  priority={true}
-                />
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Right Nav */}
+          <div className="flex items-center space-x-4">
+            <Link href="/" className="hidden sm:block">
+              <Image
+                className="w-8 h-8 rounded-full"
+                src={UserImg}
+                alt="userImg"
+              />
+            </Link>
+            <Link href="/Login">
+              <button className="bg-primaryColor py-2 px-4 text-sm md:text-base font-semibold rounded-full">
+                Login
               </button>
-            </div>
+            </Link>
+            <button
+              className="lg:hidden"
+              onClick={toggleMenu}
+              aria-label="Toggle menu"
+            >
+              <Image
+                src={showMenu ? Close : Menu}
+                alt="Menu"
+                width={24}
+                height={24}
+              />
+            </button>
           </div>
         </div>
-      </header>
-      {showMenu && <SideMenu pathname={pathname} toggleMenu={toggleMenu} />}
-    </>
+      </div>
+
+      {/* Mobile Menu */}
+      {showMenu && (
+        <div className="lg:hidden">
+          <SideMenu pathname={pathname} toggleMenu={toggleMenu} />
+        </div>
+      )}
+    </header>
   );
 };
 

@@ -10,7 +10,7 @@ const SideMenu = ({ pathname, isMenuToggled, toggleMenu }) => {
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/Dashboard", label: "Find a Doctor" },
+    { href: "/Dashboard", label: "Identify Pain Point" },
     { href: "/Services", label: "Services" },
     { href: "/Contact", label: "Contact" },
   ];

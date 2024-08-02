@@ -86,7 +86,15 @@ const Footer = () => {
           <div>
             <Image className="w-[20rem]" src={logo} alt="" />
             <p className="text-[16px] font-[400] leading-7 text-textColor mt-4">
-              © {year} developed by Edwin Munene all rights reserved.
+              © {year} developed by{" "}
+              <Link
+                className="underline"
+                target="blank"
+                href="https://personal-portfolio-site-tailwindcss.vercel.app/"
+              >
+                Edwin Munene
+              </Link>{" "}
+              all rights reserved.
             </p>
             <div className="flex items-center justify-evenly gap-3 mt-4">
               {socialLinks.map((link, index) => (
@@ -106,7 +114,12 @@ const Footer = () => {
             </h2>
             <ul>
               {quickLinks01.map((item, index) => (
-                <li className="mb-4 mx-auto" href={item.href} key={index} legacyBehavior>
+                <li
+                  className="mb-4 mx-auto"
+                  href={item.href}
+                  key={index}
+                  legacyBehavior
+                >
                   <a className="text-[16px] leading-7 font-[400] text-textColor">
                     {item.display}
                   </a>
