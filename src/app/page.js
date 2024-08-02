@@ -108,11 +108,15 @@ export default function Home() {
             {/* Hero Content */}
             <div className="flex gap-[30px] justify-end">
               <div>
-                <Image className="w-full" src={HeroImg1} alt="" />
+                <Image className="w-full" src={HeroImg1} alt="Hero Image 1" />
               </div>
               <div className="mt-[30px]">
-                <Image className="w-full mb-[30px]" src={HeroImg2} alt="" />
-                <Image className="w-full " src={HeroImg3} alt="" />
+                <Image
+                  className="w-full mb-[30px]"
+                  src={HeroImg2}
+                  alt="Hero Image 2"
+                />
+                <Image className="w-full " src={HeroImg3} alt="Hero Image 3" />
               </div>
             </div>
           </div>
@@ -133,7 +137,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-[30px] mt-[30] lg:mt-[55px] justify-center items-center">
             <div className="py-[0px] px-5 ">
               <div className="flex items-center justify-center">
-                <Image src={Icon01} alt="icon01" />
+                <Image src={Icon01} alt="Find a doctor" />
               </div>
               <div className="mt-[30px]">
                 <h2 className="text-[26px] leading-9 text-headingColor font-700 text-center">
@@ -153,7 +157,11 @@ export default function Home() {
             </div>
             <div className="py-[0px] px-5 ">
               <div className="flex items-center justify-center">
-                <Image className="w-[14rem]" src={Icon02} alt="icon01" />
+                <Image
+                  className="w-[14rem]"
+                  src={Icon02}
+                  alt="Purchase Items"
+                />
               </div>
               <div className="mt-[30px]">
                 <h2 className="text-[26px] leading-9 text-headingColor font-700 text-center">
@@ -173,7 +181,11 @@ export default function Home() {
             </div>
             <div className="py-[0px] px-5 ">
               <div className="flex items-center justify-center">
-                <Image className="w-[14rem]" src={Icon03} alt="icon01" />
+                <Image
+                  className="w-[14rem]"
+                  src={Icon03}
+                  alt="Book an Appointment"
+                />
               </div>
               <div className="mt-[30px]">
                 <h2 className="text-[26px] leading-9 text-headingColor font-700 text-center">
@@ -227,7 +239,7 @@ export default function Home() {
 
             {/* Feature Img  */}
             <div className="relative z-10 xl:w-[770px] flex justify-end mt-[50px] lg:mt-0">
-              <Image className="w-3/4" src={FeatureImg} alt="Feature Img" />
+              <Image className="w-3/4" src={FeatureImg} alt="Feature Image" />
               <div
                 className="w-[120px] lg:w-[228px] bg-white absolute bottom-[50px] left-0 md:bottom-[100] md:left-5 z-20 p-2 pb-3 lg:pt-4 lg:px-4 lg:pb-[26px] rounded-[10px]
       "
@@ -242,7 +254,7 @@ export default function Home() {
                     </p>
                   </div>
                   <span className="w-5 h-5 lg:w-[34px] lg:h-[34px]  flex items-center justify-center bg-yellowColor rounded py-1 px-[6px] lg:py-3 lg:px-[9px]">
-                    <Image className="w-3/4" src={VideoImg} alt="videoImg" />
+                    <Image className="w-3/4" src={VideoImg} alt="Video Icon" />
                   </span>
                 </div>
               </div>
